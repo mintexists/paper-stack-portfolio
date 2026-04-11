@@ -39,6 +39,7 @@
 		"wrangler": "^4.81.0"
 	},
 	"dependencies": {
-		"@humanspeak/svelte-motion": "^0.2.0"
+		"@humanspeak/svelte-motion": "^0.2.0",
+		"tailwind-merge": "^3.5.0"
 	}
 }
