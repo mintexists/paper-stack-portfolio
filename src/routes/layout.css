@@ -4,4 +4,12 @@
 html,
 body {
 	overflow: clip !important;
+	height: 100%;
 }
+
+/* @media only screen and (width <= 600px) {
+	body {
+		transform-origin: 50% 50%;
+		transform: scale(0.9);
+	}
+} */

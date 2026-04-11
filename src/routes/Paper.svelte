@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="aspect-[.714] h-[80vh] origin-center bg-amber-400 bg-contain px-20 py-17 text-base/[1] shadow-2xl"
+	class="aspect-[.714] h-[80vmin] origin-center bg-amber-400 bg-contain px-[10%] py-[10%] text-base/[1] shadow-2xl"
 	style={styleString({
 		transform: `rotate(${(Math.random() * 2 - 1) * 10}deg) translate(${(Math.random() * 2 - 1) * 20}%, ${(Math.random() * 2 - 1) * 10}%)`,
 		backgroundImage:

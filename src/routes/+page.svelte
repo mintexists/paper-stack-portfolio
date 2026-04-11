@@ -1,10 +1,8 @@
 <script lang="ts">
 	import Paper from './Paper.svelte';
 
-	import { setContext } from 'svelte';
 	import PaperContainer from './PaperContainer.svelte';
 
-	import { styleString } from '@humanspeak/svelte-motion';
 	import { cn, setContainerContext } from '$lib';
 
 	let containerEl: HTMLElement = $state(undefined);

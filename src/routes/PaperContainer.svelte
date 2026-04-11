@@ -57,8 +57,13 @@
 		offset: ['start end', 'end start']
 	});
 
-	const translateX = useTransform(scrollYProgress, [0, 0.4, 1], [offsetX, 0, 0], { clamp: true });
-	const translateY = useTransform(scrollYProgress, [0, 0.4, 1], [offsetY, 0, 0], { clamp: true });
+	// [TODO] this is a bad fix and should not be done!
+	const translateX = useTransform(scrollYProgress, [0, 0.4, 1], [1.5 * offsetX, 0, 0], {
+		clamp: true
+	});
+	const translateY = useTransform(scrollYProgress, [0, 0.4, 1], [1.5 * offsetY, 0, 0], {
+		clamp: true
+	});
 
 	const handTransformX = useTransform(
 		scrollYProgress,
