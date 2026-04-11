@@ -5,6 +5,8 @@
 
 	import { cn, setContainerContext } from '$lib';
 
+	import PDF from '$lib/assets/pdf.pdf';
+
 	let containerEl: HTMLElement = $state(undefined);
 
 	setContainerContext(() => containerEl);
@@ -22,6 +24,7 @@
 </script>
 
 <div
+	id="containy"
 	class={cn(
 		'h-screen w-full overflow-x-clip overflow-y-scroll',
 		shouldScrollSnap && 'snap-y snap-mandatory scroll-smooth'
@@ -105,7 +108,73 @@
 			praesentium molestias, veritatis iusto.
 		</Paper>
 	</PaperContainer>
-	<div class="h-screen"></div>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetY={-100}
+	>
+		<Paper>
+			<img
+				src="https://cdn.discordapp.com/emojis/1426649831287423056.gif?size=48&animated=true&name=bunnyexplode"
+				class="w-full"
+				alt="bunny"
+				draggable="false"
+			/>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetY={-100}
+	>
+		<Paper>
+			<object data={PDF} type="application/pdf" width="100%" height="100%"> </object>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetY={-100}
+	>
+		<Paper>
+			<iframe
+				width="100%"
+				class="aspect-video"
+				src="https://www.youtube.com/embed/pUF5esTscZI?si=VWP93BiX53oRkLy2"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetY={-100}
+	>
+		<Paper>
+			<iframe
+				width="100%"
+				height="100%"
+				src="https://flappybird.io/"
+				title="fuck"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+		</Paper>
+	</PaperContainer>
 </div>
 
 <style>

@@ -93,6 +93,9 @@
 		<motion.div
 			drag
 			dragMomentum={false}
+			dragTransition={{
+				timeConstant: 0.05
+			}}
 			class="pointer-events-auto relative h-min w-min"
 			whileHover={{ cursor: 'grab' }}
 			whileTap={{ cursor: 'grabbing' }}
@@ -123,7 +126,7 @@
 				<img
 					src={HandImage}
 					alt="hand"
-					class="pointer-events-none w-screen origin-center scale-300 drop-shadow-xl"
+					class="pointer-events-none w-screen origin-center scale-300 drop-shadow-md"
 					style="rotate: calc(atan2({$handTransformX}, {$handTransformY}));"
 				/>
 			</div>
