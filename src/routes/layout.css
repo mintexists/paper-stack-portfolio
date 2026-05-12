@@ -1,8 +1,236 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+:root {
+	--shadow-color: 0deg 0% 0%;
+	--shadow-elevation-low:
+		0.3px 0.8px 0.8px hsl(var(--shadow-color) / 0.21),
+		0.5px 1.3px 1.3px -1.9px hsl(var(--shadow-color) / 0.16),
+		1.3px 3.7px 3.6px -3.8px hsl(var(--shadow-color) / 0.11);
+	--shadow-elevation-medium:
+		0.3px 0.8px 0.8px hsl(var(--shadow-color) / 0.17),
+		0.6px 1.7px 1.7px -0.9px hsl(var(--shadow-color) / 0.15),
+		1.4px 3.8px 3.8px -1.9px hsl(var(--shadow-color) / 0.13),
+		3.1px 8.9px 8.8px -2.8px hsl(var(--shadow-color) / 0.1),
+		6.6px 18.6px 18.4px -3.8px hsl(var(--shadow-color) / 0.08);
+	--shadow-elevation-high:
+		0.3px 0.8px 0.8px hsl(var(--shadow-color) / 0.16),
+		1px 2.8px 2.8px -0.4px hsl(var(--shadow-color) / 0.15),
+		1.8px 5.2px 5.1px -0.8px hsl(var(--shadow-color) / 0.14),
+		3.1px 8.8px 8.7px -1.3px hsl(var(--shadow-color) / 0.13),
+		5.1px 14.6px 14.4px -1.7px hsl(var(--shadow-color) / 0.12),
+		8.2px 23.3px 23px -2.1px hsl(var(--shadow-color) / 0.11),
+		12.6px 35.8px 35.3px -2.5px hsl(var(--shadow-color) / 0.09),
+		18.7px 53.1px 52.4px -3px hsl(var(--shadow-color) / 0.08),
+		26.8px 75.8px 74.8px -3.4px hsl(var(--shadow-color) / 0.07),
+		37.1px 105px 103.6px -3.8px hsl(var(--shadow-color) / 0.06);
+}
 html,
 body {
 	overflow: clip !important;
 	height: 100%;
+	/* background-color: #ffd1a3; */
+}
+
+.shadow-box {
+	/* filter: drop-shadow(5em 5em 0em red) drop-shadow(1em 1em 2em rgba(0, 0, 0, 1)); */
+	box-shadow: var(--shadow-style);
+	transition: box-shadow 500ms ease-out;
+}
+
+.paper {
+	/* &::before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: -100;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	} */
+	& .noise {
+		touch-action: none;
+		pointer-events: none;
+		position: absolute;
+		z-index: 100000;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 1;
+		/* background-size: 500%; */
+		background-size: cover;
+		background-position: center;
+		mix-blend-mode: multiply;
+		/* filter: brightness(100%); */
+
+		&.rough {
+			filter: saturate(10%) contrast(20%) brightness(180%);
+			background-image: url('$lib/assets/images/rough paper.jpg');
+		}
+		&.fine {
+			background-image: url('$lib/assets/images/fine paper.jpg');
+		}
+	}
+}
+
+.even-more-background {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #ffd1a3;
+}
+
+.background {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: calc(100% - 3em);
+	height: calc(100% - 2em);
+	box-shadow: 0em 0.1em 0.5em rgba(0, 0, 0, 0.8);
+
+	padding: 1em;
+	margin: 1em;
+	margin-right: 3em;
+	border-radius: 1em;
+	background: #015c4b;
+	box-sizing: border-box;
+	overflow: clip;
+	/* filter: url(#wavy); */
+
+	& .noise {
+		position: absolute;
+		z-index: 100000;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0.4;
+		background-size: 30%;
+		mix-blend-mode: multiply;
+		filter: brightness(160%);
+		background-image: url('$lib/assets/images/Image_gaussian_noise_example.png');
+	}
+
+	.bigger-grid {
+		--cells: 20;
+		--color: rgba(from #96b9af r g b / 0.4);
+		width: 100%;
+		height: 100%;
+		background-image:
+			linear-gradient(to right, var(--color) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--color) 1px, transparent 1px);
+		background-size: calc((100vw - 5em - 1px) / var(--cells))
+			calc((100vw - 5em - 1px) / var(--cells));
+		padding: calc((100vw - 5em - 1px) / var(--cells));
+		overflow: clip;
+		position: relative;
+	}
+
+	& .grid {
+		--cells: 80;
+		--color: rgba(from #96b9af r g b / 0.2);
+		width: 100%;
+		height: 100%;
+		background-image:
+			linear-gradient(to right, var(--color) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--color) 1px, transparent 1px);
+		background-size: calc((100vw - 5em - 1px) / var(--cells))
+			calc((100vw - 5em - 1px) / var(--cells));
+		position: relative;
+	}
+
+	& .compass {
+		--color: rgba(from #96b9af r g b / 0.8);
+		width: calc((100vw - 4em - 1px) / var(--cells) * 20 - 2px);
+		height: calc((100vw - 4em - 1px) / var(--cells) * 20 - 2px);
+		position: relative;
+		border-bottom-right-radius: 100%;
+		border: var(--color) 2px solid;
+		border-left: 0;
+		border-top: 0;
+		clip-path: shape(
+			from 100% 0%,
+			arc to 0% 100% of 100% cw,
+			vline to 90%,
+			arc to 90% 0% of 90% ccw
+		);
+		background: conic-gradient(
+			at 0% 0%,
+			var(--color) 90deg,
+			transparent 90deg 100deg,
+			var(--color) 100deg 100.5deg,
+			transparent 100.5deg 110deg,
+			var(--color) 110deg 110.5deg,
+			transparent 110.5deg 120deg,
+			var(--color) 120deg 120.5deg,
+			transparent 120.5deg 130deg,
+			var(--color) 130deg 130.5deg,
+			transparent 130.5deg 140deg,
+			var(--color) 140deg 140.5deg,
+			transparent 140.5deg 150deg,
+			var(--color) 150deg 150.5deg,
+			transparent 150.5deg 160deg,
+			var(--color) 160deg 160.5deg,
+			transparent 160.5deg 170deg,
+			var(--color) 170deg 170.5deg,
+			transparent 170.5deg 180deg
+		);
+		/* background-color: red; */
+	}
+
+	& .angle-markers {
+		--angle: 0deg;
+		--color: rgba(from #96b9af r g b / 0.8);
+		width: 1px;
+		height: 200vh;
+		position: absolute;
+		top: 0%;
+		background: var(--color);
+		transform-origin: top left;
+		transform: rotate(var(--angle));
+	}
+
+	& .ticks {
+		--ticks: 40;
+		--height: 0.5;
+		width: 100%;
+		height: calc((100vw - 5em - 1px) / var(--cells) * 2);
+		position: absolute;
+		/* background: red; */
+		top: 0;
+		left: 0;
+		background-image:
+			linear-gradient(to right, var(--color) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--color) 1px, transparent 1px);
+		background-size: calc((100vw - 5em - 1px) / var(--ticks))
+			calc((100vw - 5em - 1px) / var(--ticks));
+
+		&.horizontal {
+			width: 100%;
+			height: calc((100vw - 5em - 1px) / var(--cells) * var(--height));
+			background-image: linear-gradient(to right, var(--color) 1px, transparent 1px);
+		}
+
+		&.vertical {
+			height: 100%;
+			width: calc((100vw - 5em - 1px) / var(--cells) * var(--height));
+			background-image: linear-gradient(to bottom, var(--color) 1px, transparent 1px);
+		}
+
+		&.bottom {
+			top: unset;
+			bottom: 0;
+		}
+
+		&.right {
+			left: unset;
+			right: 0;
+		}
+	}
 }

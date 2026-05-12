@@ -21,6 +21,12 @@
 
 	// $inspect($scrollYProgress);
 	// let lastScrollTime =
+
+	const jitterXPercent = 10;
+	const jitterYPercent = 5;
+
+	import Green from '$lib/assets/images/Green.png';
+	import { styleString } from '@humanspeak/svelte-motion';
 </script>
 
 <div
@@ -32,54 +38,107 @@
 	bind:this={containerEl}
 	onscroll={(e) => (scrollTopCopy = containerEl.scrollTop)}
 >
-	<!-- {#each new Array(5).fill(0) as _, i (i)}
-		<PaperContainer bind:scrollTopCopy bind:shouldScrollSnap bind:timeout {smoothScrollTimeout}>
-			<div
-				class="aspect-[.714] h-[80vh] origin-center bg-amber-400 shadow-2xl"
-				style={styleString({
-					transform: `rotate(${(Math.random() * 2 - 1) * 10}deg) translate(${(Math.random() * 2 - 1) * 20}%, 0%)`
-				})}
-			></div>
-		</PaperContainer>
-	{/each} -->
+	<span class="contents">
+		<div class="even-more-background"></div>
+		<div class="background">
+			<div class="noise"></div>
+			<div class="noise" style="background-size: 100%; opacity: .1;"></div>
+			<div class="bigger-grid">
+				<div class="ticks horizontal" style="--ticks: 40; --height: 0.5"></div>
+				<div class="ticks horizontal" style="--ticks: 80; --height: 0.3"></div>
+				<div class="ticks horizontal" style="--ticks: 160; --height: 0.25"></div>
+				<div class="ticks horizontal bottom" style="--ticks: 40; --height: 0.5"></div>
+				<div class="ticks horizontal bottom" style="--ticks: 80; --height: 0.3"></div>
+				<div class="ticks horizontal bottom" style="--ticks: 160; --height: 0.25"></div>
+				<div class="ticks vertical" style="--ticks: 40; --height: 0.5"></div>
+				<div class="ticks vertical" style="--ticks: 80; --height: 0.3"></div>
+				<div class="ticks vertical" style="--ticks: 160; --height: 0.25"></div>
+				<div class="ticks vertical right" style="--ticks: 40; --height: 0.5"></div>
+				<div class="ticks vertical right" style="--ticks: 80; --height: 0.3"></div>
+				<div class="ticks vertical right" style="--ticks: 160; --height: 0.25"></div>
+				<div class="grid">
+					<div class="compass"></div>
+					<div class="angle-markers" style="--angle: -60deg;"></div>
+					<div class="angle-markers" style="--angle: -45deg;"></div>
+					<div class="angle-markers" style="--angle: 45deg; left: 100%;"></div>
+					<div class="angle-markers" style="--angle: 30deg; left: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</span>
+
 	<div class="h-screen snap-start"></div>
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
 		bind:timeout
 		{smoothScrollTimeout}
-		offsetX={100}
-	>
-		<Paper>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
-			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
-			praesentium molestias, veritatis iusto.
-		</Paper>
-	</PaperContainer>
-	<PaperContainer
-		bind:scrollTopCopy
-		bind:shouldScrollSnap
-		bind:timeout
-		{smoothScrollTimeout}
-		offsetX={100}
-	>
-		<Paper>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
-			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
-			praesentium molestias, veritatis iusto.
-		</Paper>
-	</PaperContainer>
-	<PaperContainer
-		bind:scrollTopCopy
-		bind:shouldScrollSnap
-		bind:timeout
-		{smoothScrollTimeout}
+		shadow={false}
 		offsetX={-100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
+		class="top-0 left-20"
+	>
+		<div
+			class="paper flex h-60 w-80 items-center justify-center bg-center bg-no-repeat pt-10 text-6xl drop-shadow-lg drop-shadow-black/50"
+			style={styleString({
+				backgroundImage: `url(${Green});`,
+				backgroundSize: '100% 100%',
+				fontFamily: '"Schoolbell", cursive'
+			})}
+		>
+			Mint Bates
+		</div>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetY={-100}
+		style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
+		class="absolute top-80 left-15"
+	>
+		<Paper class="h-60 w-60 bg-yellow-200">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
+			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
+			praesentium molestias, veritatis iusto.
+			<div class="noise rough"></div>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetX={100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
 			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
 			praesentium molestias, veritatis iusto.
+			<div class="noise rough"></div>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetX={100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
+	>
+		<Paper>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
+			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
+			praesentium molestias, veritatis iusto.
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 	<PaperContainer
@@ -88,11 +147,15 @@
 		bind:timeout
 		{smoothScrollTimeout}
 		offsetY={100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
 			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
 			praesentium molestias, veritatis iusto.
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 	<PaperContainer
@@ -100,20 +163,27 @@
 		bind:shouldScrollSnap
 		bind:timeout
 		{smoothScrollTimeout}
-		offsetY={-100}
+		offsetY={100}
+		style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
+		class="absolute right-20 bottom-40"
 	>
-		<Paper>
+		<Paper class="h-60 w-60 bg-pink-400">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur eos harum tempore
 			molestiae omnis pariatur! Fugiat qui soluta harum aliquid, ipsam recusandae? Qui ut illum
 			praesentium molestias, veritatis iusto.
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
+
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
 		bind:timeout
 		{smoothScrollTimeout}
 		offsetY={-100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
 			<img
@@ -122,6 +192,7 @@
 				alt="bunny"
 				draggable="false"
 			/>
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 	<PaperContainer
@@ -130,9 +201,13 @@
 		bind:timeout
 		{smoothScrollTimeout}
 		offsetY={-100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
-			<object data={PDF} type="application/pdf" width="100%" height="100%"> </object>
+			<!-- <object title="resume" data={PDF} type="application/pdf" width="100%" height="100%"> </object> -->
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 	<PaperContainer
@@ -141,6 +216,9 @@
 		bind:timeout
 		{smoothScrollTimeout}
 		offsetY={-100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
 			<iframe
@@ -153,6 +231,7 @@
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen
 			></iframe>
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 	<PaperContainer
@@ -161,6 +240,9 @@
 		bind:timeout
 		{smoothScrollTimeout}
 		offsetY={-100}
+		style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+			jitterYPercent -
+			50}%;"
 	>
 		<Paper>
 			<iframe
@@ -173,6 +255,7 @@
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen
 			></iframe>
+			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
 </div>
