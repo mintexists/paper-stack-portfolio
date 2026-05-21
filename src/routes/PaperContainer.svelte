@@ -16,7 +16,11 @@
 		offsetX = 0,
 		offsetY = 0,
 		class: className,
-		shadow = true
+		shadow = true,
+		rotateJitter = 5,
+		rotate = 0,
+		zIndex,
+		styleObject = {}
 	}: {
 		children?: Snippet;
 		scrollTopCopy: number;
@@ -26,8 +30,12 @@
 		offsetX?: number;
 		offsetY?: number;
 		class?: ClassValue;
-		style?: string;
+		// style?: string;
 		shadow?: boolean;
+		zIndex?: number;
+		rotateJitter?: number;
+		rotate?: number;
+		styleObject?: Record<string, string | number>;
 	} = $props();
 
 	let targetEl: HTMLElement | undefined;
@@ -56,7 +64,7 @@
 			height: r.height
 		};
 	});
-	$inspect(containerElBoundingRect());
+	// $inspect(containerElBoundingRect());
 
 	const { scrollYProgress } = useScroll({
 		target: () => targetEl,
@@ -116,7 +124,7 @@
 <div class="pointer-events-none h-screen w-full snap-start snap-always" bind:this={targetEl}>
 	<div
 		class="pointer-events-none absolute top-0 h-screen w-full items-center justify-center"
-		style="transform: translate({$translateX}%, {$translateY}%);"
+		style="transform: translate({$translateX}%, {$translateY}%); z-index: {zIndex ?? 'unset'}"
 	>
 		<motion.div
 			drag
@@ -129,11 +137,12 @@
 				!className && 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
 				className
 			)}
-			style="--shadow-style: var({$shadowStyle})"
+			//style="--shadow-style: var({$shadowStyle})"
 			// style="{className
 			// 	? ''
 			// 	: 'translate: -50% -50%; top: 50%; left: 50%;'} --shadow-style: var({$shadowStyle}); {style}"
 			//[TODO] this breaks things, cant set style on the div it fucks things up, gotta do something else :3
+			whileInView={{ '--shadow-style': `var(${$shadowStyle})` }}
 			whileHover={{ cursor: 'grab', '--shadow-style': `var(${$shadowStyle})` }}
 			whileTap={{ cursor: 'grabbing', '--shadow-style': `var(--shadow-elevation-high)` }}
 			// dragConstraints={{
@@ -172,7 +181,8 @@
 				<div
 					class={cn(shadow && 'shadow-box')}
 					style={styleString({
-						transform: `rotate(${(Math.random() * 2 - 1) * 10}deg)`
+						transform: `${`rotate(${(Math.random() * 2 - 1) * rotateJitter + rotate}deg)`}`,
+						...styleObject
 					})}
 				>
 					{#if children}

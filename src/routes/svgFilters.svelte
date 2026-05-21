@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DisplacementMap from '$lib/assets/images/displacement.png';
 	import Disp2 from '$lib/assets/images/disp2.png';
+	// import Disp3 from '$lib/assets/images/disp3.png';
 </script>
 
 <svg width="100%" height="100%" x="0" y="0">

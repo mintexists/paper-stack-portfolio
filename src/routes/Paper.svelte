@@ -15,9 +15,9 @@
 	style={styleString({
 		// backgroundImage:
 		// 	'url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F93%2F93%2Fe8%2F9393e89d391cef9804193cf76a624e11.jpg&f=1&nofb=1&ipt=fa8dce6e715a7a69d7e736bf4daee921752aca2adc236de6c28d16a779a53174")',
-		fontFamily: '"Schoolbell", cursive',
+		fontFamily: '"jeff-script", sans-serif'
 		// boxShadow: 'var(--shadow-style);',
-		filter: 'url(#wavy);'
+		// filter: 'url(#wavy);'
 	})}
 >
 	{#if children}
