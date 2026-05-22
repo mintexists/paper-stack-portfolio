@@ -127,6 +127,7 @@
 		style="transform: translate({$translateX}%, {$translateY}%); z-index: {zIndex ?? 'unset'}"
 	>
 		<motion.div
+			tabindex="-1"
 			drag
 			dragMomentum={false}
 			dragTransition={{

@@ -88,6 +88,7 @@
 		>
 			<p style="font-family: 'jeff-script', sans-serif;">Scroll To Begin</p>
 			<p class="text-2xl">↓</p>
+			<p style="font-family: 'jeff-script', sans-serif;" class="text-xs">(Or Press Space)</p>
 		</div>
 	</div>
 
@@ -103,7 +104,7 @@
 		// 	50}%;"
 		class="top-0 left-20"
 		rotateJitter={0}
-		zIndex={0}
+		zIndex={1}
 	>
 		<div
 			class="paper flex h-60 w-60 items-center justify-center bg-center bg-no-repeat pt-10 text-6xl drop-shadow-lg drop-shadow-black/50"
@@ -123,10 +124,10 @@
 		{smoothScrollTimeout}
 		offsetY={-100}
 		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
-		class="absolute top-55 left-15"
+		class="top-55 left-15"
 		rotate={5}
 		rotateJitter={2}
-		zIndex={-1}
+		zIndex={0}
 	>
 		<Paper class="aspect-auto h-60 w-60 bg-yellow-200 text-lg">
 			<p>
@@ -143,10 +144,10 @@
 		{smoothScrollTimeout}
 		offsetY={-100}
 		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
-		class="absolute top-98 left-20"
+		class="top-98 left-20"
 		rotate={-4}
 		rotateJitter={2}
-		zIndex={-1}
+		zIndex={0}
 	>
 		<Paper class="aspect-auto h-min w-60 bg-orange-300 text-lg">
 			<p>
@@ -223,6 +224,7 @@
 						<li>Created shaders and post processing effects using GLSL</li>
 					</ul>
 					<iframe
+						tabindex="-1"
 						class="mt-auto self-end"
 						title="ZerO2 Itch.io"
 						frameborder="0"
@@ -329,6 +331,7 @@
 						</ul>
 					</div>
 					<iframe
+						tabindex="-1"
 						title="Roombi Rumble Itch.io"
 						class="mt-auto"
 						frameborder="0"
