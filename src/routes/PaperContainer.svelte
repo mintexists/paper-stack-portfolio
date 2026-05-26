@@ -20,7 +20,9 @@
 		rotateJitter = 5,
 		rotate = 0,
 		zIndex,
-		styleObject = {}
+		styleObject = {},
+		id,
+		drag
 	}: {
 		children?: Snippet;
 		scrollTopCopy: number;
@@ -36,6 +38,8 @@
 		rotateJitter?: number;
 		rotate?: number;
 		styleObject?: Record<string, string | number>;
+		id?: string;
+		drag?: boolean;
 	} = $props();
 
 	let targetEl: HTMLElement | undefined;
@@ -121,14 +125,14 @@
 	}
 </script>
 
-<div class="pointer-events-none h-screen w-full snap-start snap-always" bind:this={targetEl}>
+<div class="pointer-events-none h-screen w-full snap-start snap-always" bind:this={targetEl} {id}>
 	<div
 		class="pointer-events-none absolute top-0 h-screen w-full items-center justify-center"
 		style="transform: translate({$translateX}%, {$translateY}%); z-index: {zIndex ?? 'unset'}"
 	>
 		<motion.div
 			tabindex="-1"
-			drag
+			drag={drag == undefined ? true : drag}
 			dragMomentum={false}
 			dragTransition={{
 				timeConstant: 0.05

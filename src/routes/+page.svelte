@@ -162,6 +162,29 @@
 		bind:shouldScrollSnap
 		bind:timeout
 		{smoothScrollTimeout}
+		offsetY={-100}
+		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
+		class="absolute top-10 right-10"
+		rotate={-4}
+		rotateJitter={2}
+		zIndex={2}
+		drag={false}
+	>
+		<Paper class="aspect-auto h-min w-50 bg-amber-100 text-lg">
+			<ul class="list-inside list-disc">
+				<p><a href="#projects">Projects</a></p>
+				<li><a href="#zero2">ZerO2</a></li>
+				<li><a href="#roombiRumble">Roombi Rumble</a></li>
+				<p><a href="#resume">Resume</a></p>
+			</ul>
+			<div class="noise rough"></div>
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
 		shadow={false}
 		offsetX={-100}
 		// style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 100}% {(Math.random() * 2 - 1) *
@@ -170,6 +193,7 @@
 		class="top-0 left-1/2 -translate-x-1/2"
 		rotateJitter={0}
 		zIndex={1}
+		id="projects"
 	>
 		<div
 			class="paper flex h-35 w-100 items-center justify-center bg-center bg-no-repeat pt-5 text-6xl drop-shadow-md drop-shadow-black/20"
@@ -251,6 +275,7 @@
 		class="absolute top-160 left-2/10"
 		rotate={0}
 		rotateJitter={2}
+		id="zero2"
 	>
 		<Paper class="flex h-60 w-60 flex-col bg-yellow-200 text-xl">
 			<p>
@@ -358,6 +383,7 @@
 		class="absolute top-120 left-7/10"
 		rotate={-3}
 		rotateJitter={2}
+		id="roombiRumble"
 	>
 		<Paper class="flex h-60 w-60 flex-col bg-pink-400 text-xl">
 			<p>
@@ -420,6 +446,7 @@
 		rotate={3}
 		rotateJitter={2}
 		zIndex={1}
+		id="resume"
 	>
 		<Paper class="h-60 w-60 bg-red-400 text-5xl">
 			<div
