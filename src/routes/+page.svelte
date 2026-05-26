@@ -22,13 +22,15 @@
 	// $inspect($scrollYProgress);
 	// let lastScrollTime =
 
-	const jitterXPercent = 10;
-	const jitterYPercent = 5;
+	// const jitterXPercent = 10;
+	// const jitterYPercent = 5;
 
 	import Green from '$lib/assets/images/Green.png';
 	import Blue2 from '$lib/assets/images/Blue2.png';
 	import ZerO2 from '$lib/assets/images/zero2.png';
 	import RoombiRumble from '$lib/assets/images/roombi rumble.png';
+	import TSTPhone from '$lib/assets/images/tst-phone.png';
+	import TSTTablet from '$lib/assets/images/tst-tablet.png';
 
 	const zero2Images = import.meta.glob(
 		'$lib/assets/images/zero2/*.{avif,AVIF,gif,GIF,heif,HEIF,jpeg,JPEG,jpg,JPG,png,PNG,tiff,TIFF,webp,WEBP}',
@@ -92,6 +94,7 @@
 		</div>
 	</div>
 
+	<!-- #region -->
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
@@ -157,22 +160,29 @@
 			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
+
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
 		bind:timeout
 		{smoothScrollTimeout}
-		offsetY={-100}
+		offsetX={-100}
 		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
-		class="absolute top-10 right-10"
+		class="absolute top-10 right-15"
 		rotate={-4}
 		rotateJitter={2}
 		zIndex={2}
 		drag={false}
+		id="aboutMe"
 	>
-		<Paper class="aspect-auto h-min w-50 bg-amber-100 text-lg">
-			<ul class="list-inside list-disc">
+		<Paper class="aspect-auto h-min w-60 bg-amber-100 text-lg">
+			<ul
+				class="list-inside list-disc pr-2"
+				style="background: linear-gradient(to top, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 100% calc(100% / 7);"
+			>
+				<p><a href="#aboutMe">About Me</a></p>
 				<p><a href="#projects">Projects</a></p>
+				<li><a href="#employeeManagement">Employee Management Prototype</a></li>
 				<li><a href="#zero2">ZerO2</a></li>
 				<li><a href="#roombiRumble">Roombi Rumble</a></li>
 				<p><a href="#resume">Resume</a></p>
@@ -180,6 +190,7 @@
 			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
+
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
@@ -206,6 +217,93 @@
 			<span class="mix-blend-overlay">Projects!</span>
 		</div>
 	</PaperContainer>
+
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetX={100}
+		// style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
+		// 	jitterYPercent -
+		// 	50}%;"
+		class="top-25 left-5/10 -translate-x-1/2"
+		rotateJitter={2}
+		rotate={-1}
+		styleObject={{
+			translate: `${(Math.random() * 2 - 1) * 4}% ${(Math.random() * 2 - 1) * 3}%`
+		}}
+	>
+		<Paper class="h-200 px-5 py-10">
+			<div class="flex h-full flex-col gap-4">
+				<div class="flex h-full flex-col gap-2 px-5 text-xl">
+					<div class="[&>p]:my-2">
+						<!-- <img
+							src={RoombiRumble}
+							class="float-left -ml-12 aspect-auto h-45 w-auto rounded-md"
+							alt="Roombi Rumble logo. The Godot game engine mascot on top of a roomba with a knife duct taped to it."
+							draggable="false"
+							style="clip-path: polygon(15% 40%, 28% 24%, 30% 16%, 37% 5%, 45% 0%, 58% 0%, 67% 5%, 69% 22%, 79% 28%, 82% 55%, 75% 67%, 85% 86%, 87% 100%, 82% 100%, 63% 77%, 51% 80%, 28% 73%, 16% 61%); shape-outside: polygon(15% 40%, 28% 24%, 30% 16%, 37% 5%, 45% 0%, 58% 0%, 67% 5%, 69% 22%, 79% 28%, 82% 55%, 75% 67%, 85% 86%, 87% 100%, 82% 100%, 63% 77%, 51% 80%, 28% 73%, 16% 61%);"
+						/> -->
+						<h1 class="text-6xl">Prototype Employee Management Platform</h1>
+						<p>
+							This prototype was created for TradeShowTemps during an internship. It comprises of a
+							web dashboard for scheduling trade show events, assigning employees to shifts, and
+							managing workers.
+						</p>
+						<p>
+							In addition, there is a dashboard for employees to join shifts and check in. It was
+							designed to be mobile-first.
+						</p>
+						<p>
+							I worked as a web and fullstack developer throughout my duration of the internship.
+						</p>
+						<ul class="list-inside list-disc">
+							<li>
+								Designing and developing a HR employee management and scheduling platform written in
+								Typescript using the Svelte framework
+							</li>
+							<li>Utilizing serverless infrastructure for hosting and databases</li>
+							<li>Managing tasks and billable hours using Trello and Assista</li>
+						</ul>
+					</div>
+				</div>
+				<div class="noise rough"></div>
+			</div></Paper
+		>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetX={-100}
+		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
+		class="absolute top-80 left-7/10 -translate-x-1/2"
+		rotate={2}
+		rotateJitter={2}
+	>
+		<Paper class="flex aspect-auto h-auto w-180 flex-col bg-transparent p-0 text-xl">
+			<enhanced:img src={TSTTablet} draggable="false" class="scale-105" />
+		</Paper>
+	</PaperContainer>
+	<PaperContainer
+		bind:scrollTopCopy
+		bind:shouldScrollSnap
+		bind:timeout
+		{smoothScrollTimeout}
+		offsetX={-100}
+		// style="translate: {(Math.random() * 2 - 1) * 10}% {(Math.random() * 2 - 1) * 10}%;"
+		class="absolute top-90 left-2/10"
+		rotate={-5}
+		rotateJitter={2}
+		id="employeeManagement"
+	>
+		<Paper class="flex h-auto w-60 flex-col bg-transparent p-0 text-xl">
+			<enhanced:img src={TSTPhone} draggable="false" class="scale-110" />
+		</Paper>
+	</PaperContainer>
+
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
@@ -264,7 +362,6 @@
 			</div></Paper
 		>
 	</PaperContainer>
-
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
@@ -285,7 +382,6 @@
 			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
-
 	{#each Object.entries(zero2Images) as [_path, module] (_path)}
 		<!-- <enhanced:img src={module.default} alt="some alt text" /> -->
 		{@const xOrY = Math.random() > 0.5}
@@ -372,7 +468,6 @@
 			</div></Paper
 		>
 	</PaperContainer>
-
 	<PaperContainer
 		bind:scrollTopCopy
 		bind:shouldScrollSnap
@@ -395,25 +490,6 @@
 			<div class="noise rough"></div>
 		</Paper>
 	</PaperContainer>
-
-	<!-- <PaperContainer
-		bind:scrollTopCopy
-		bind:shouldScrollSnap
-		bind:timeout
-		{smoothScrollTimeout}
-		offsetX={100}
-		// style="translate: {(Math.random() * 2 - 1) * jitterXPercent - 50}% {(Math.random() * 2 - 1) *
-		// 	jitterYPercent -
-		// 	50}%;"
-		styleObject={{
-			translate: `${(Math.random() * 2 - 1) * 8}% ${(Math.random() * 2 - 1) * 6}%`
-		}}
-	>
-		<Paper class="h-200">
-			<p class="text-8xl">Im the best ever to do it</p>
-			<div class="noise rough"></div>
-		</Paper>
-	</PaperContainer> -->
 
 	<PaperContainer
 		bind:scrollTopCopy
